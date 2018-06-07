@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class DiceRoll : MonoBehaviour {
 
-	public bool hasRolled;
-
 	// Use this for initialization
 	void Start () {
-		hasRolled = false;
+		
 	}
 	
 	// Update is called once per frame
@@ -19,7 +17,17 @@ public class DiceRoll : MonoBehaviour {
 	public int[] diceVals = new int[4];
 	public int diceTotal;
 
-	public void RollTheDice(){
+    public bool isRolling = false;
+    public bool hasRolled;
+
+    public void NewTurn()
+    {
+        //Start of players turn
+        //We don't have a roll for them yet.
+        hasRolled = false;
+}
+
+    public void RollTheDice(){
 		diceTotal = 0;
 
 		//Quill's way...
@@ -27,8 +35,11 @@ public class DiceRoll : MonoBehaviour {
 			diceVals [i] = Random.Range (0, 2);
 			diceTotal += diceVals [i];
 		}
-		Debug.Log ("Rolled: " + diceVals + " (" + diceTotal + ")");
+
+        //if we had an animation for rolling dice, we would play it here.
 		hasRolled = true;
-		//My way...
-	}
+        
+
+        //My way...
+    }
 }
